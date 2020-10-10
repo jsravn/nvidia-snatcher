@@ -7,7 +7,6 @@ node_modules/
 success-*.png
 
 *.wav
-*.mp3
 *.flac
 *.exe
 desktop.ini
