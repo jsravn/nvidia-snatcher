@@ -14,7 +14,7 @@ config_({path: path.resolve(__dirname, '../.env')});
  * @param array Default array. If not set, is `[]`.
  */
 function envOrArray(environment: string | undefined, array?: string[]): string[] {
-	return environment ? environment.split(',') : (array ?? []);
+	return (environment ? environment.split(',') : (array ?? [])).map(s => s.trim());
 }
 
 /**
@@ -158,7 +158,7 @@ const notifications = {
 	playSound: envOrString(process.env.PLAY_SOUND),
 	pushbullet: envOrString(process.env.PUSHBULLET),
 	pushover: {
-		priority: envOrString(process.env.PUSHOVER_PRIORITY),
+		priority: envOrNumber(process.env.PUSHOVER_PRIORITY),
 		token: envOrString(process.env.PUSHOVER_TOKEN),
 		username: envOrString(process.env.PUSHOVER_USER)
 	},
